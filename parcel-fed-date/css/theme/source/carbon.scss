@@ -1,0 +1,90 @@
+/**
+ * Carbon theme for reveal.js.
+ */
+
+// Default mixins and settings -----------------
+@import "../template/mixins";
+@import "../template/settings";
+// ---------------------------------------------
+
+// Include theme-specific fonts
+@import url(../../../node_modules/@ibm/type/css/ibm-type.min.css);
+
+// Carbon Color Variables
+$brand-01: #3d70b2;
+$brand-02: #5596e6;
+$brand-03: #41d6c3;
+$inverse-01: #ffffff;
+$ui-01: #ffffff;
+$ui-02: #f5f7fa;
+$ui-03: #f0f3f6;
+$ui-04: #dfe3e6;
+$ui-05: #8c9ba5;
+$text-01: #152934;
+$text-02: #5a6872;
+$text-03: #5a6872;
+$field-01: #ebf0f7;
+$support-01: #e71d32;
+$support-02: #5aa700;
+$support-03: #efc100;
+$support-04: #5aaafa;
+
+// Background of the presentation
+$backgroundColor: $ui-02;
+
+// Primary/body text
+$mainFont: 'IBM Plex Sans', 'Helvetica Neue', Arial, sans-serif;
+$mainFontSize: 40px;
+$mainColor: $text-01;
+
+// Vertical spacing between blocks of text
+$blockMargin: 20px;
+
+// Headings
+$headingMargin: 0 0 $blockMargin 0;
+$headingFont: 'IBM Plex Sans', 'Helvetica Neue', Arial, sans-serif;
+$headingColor: $text-01;
+$headingLineHeight: 1.2;
+$headingLetterSpacing: normal;
+$headingTextTransform: normal;
+$headingTextShadow: none;
+$headingFontWeight: normal;
+$heading1TextShadow: $headingTextShadow;
+
+$heading1Size: 3.77em;
+$heading2Size: 2.11em;
+$heading3Size: 1.55em;
+$heading4Size: 1.00em;
+
+// Links and actions
+$linkColor: $text-01;
+$linkColorHover: $brand-02;
+
+// Text selection
+$selectionBackgroundColor: $brand-02;
+$selectionColor: $text-01;
+
+// Generates the presentation background, can be overridden
+// to return a background image or gradient
+@mixin bodyBackground() {
+	background: $backgroundColor;
+}
+
+.ibm {
+  position: fixed;
+  bottom: 5px;
+  left: 5px;
+  font-size: .6em !important;
+
+  &__brand {
+    font-weight: 300;
+  }
+
+  &__product {
+    font-weight: bold !important;
+  }
+}
+
+// Theme template ------------------------------
+@import "../template/theme";
+// ---------------------------------------------
