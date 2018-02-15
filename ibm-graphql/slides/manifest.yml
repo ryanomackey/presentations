@@ -1,0 +1,4 @@
+---
+applications:
+  - name: qavd-slides
+    memory: 256M
