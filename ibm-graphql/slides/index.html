@@ -104,16 +104,22 @@
 				</section>
 
 				<section>
-					<h3>And if a server goes down...</h3><img src="./images/better-data-layer/server-down.gif" alt="Simpsons taking the system down.">
+					<h3>And if a server goes down...</h3><img src="lib/images/server-down.gif" alt="Simpsons taking the system down.">
 				</section>
 				<section>
-					<h3>...we wait.</h3><img src="./images/better-data-layer/waiting.gif" alt="Cookie Monster waiting.">
+					<h3>...we wait.</h3><img src="lib/images/waiting.gif" alt="Cookie Monster waiting.">
 				</section>
 				<section>
 					<h2>It can be rough on our <em>users</em>, too.</h2>
 				</section>
 				<section>
-					<div class="forever-aload"><img src="./images/better-data-layer/forever-aload.jpg" alt="Forever a-load."></div>
+					<blockquote cite="https://www.doubleclickbygoogle.com/articles/mobile-speed-matters/">
+						<p>
+							"53% of visits are abandoned if a mobile site takes more than three
+							seconds to load"
+						</p>
+						<span>- DoubleClick</span>
+					</blockquote>
 				</section>
 				<section>
 					<h2>We can do <em>better</em></h2>
@@ -138,31 +144,31 @@
 					<h4>...and <em>GraphQL</em> + <em>React</em> make it easy</h4>
 				</section>
 				<section>
-					<h4>Interactive Online <em>Documentation</em></h4><img class="no-margin" src="./images/better-data-layer/graphql-playground.png" alt="GraphQL Playground.">
+					<h4>Interactive Online <em>Documentation</em></h4><img class="no-margin" src="lib/images/graphql-playground.png" alt="GraphQL Playground.">
 					<p class="no-margin">Guaranteed to be up-to-date!</p>
 				</section>
 				<section>
-					<h4><em>Test Queries</em> in the Browser</h4><img class="no-margin" src="./images/better-data-layer/full-query.png" alt="GraphQL query and result.">
+					<h4><em>Test Queries</em> in the Browser</h4><img class="no-margin" src="lib/images/full-query.png" alt="GraphQL query and result.">
 					<p class="no-margin">This is copy-pasteable into your app.</p>
 				</section>
 				<section>
-					<h4>Load <em>Only</em> Data We Need</h4><img class="no-margin" src="./images/better-data-layer/query-test.png" alt="GraphQL Playground query with only a few fields.">
+					<h4>Load <em>Only</em> Data We Need</h4><img class="no-margin" src="lib/images/query-test.png" alt="GraphQL Playground query with only a few fields.">
 					<p class="no-margin">No wasted data transfer.</p>
 				</section>
 				<section>
-					<h4>Work <em>Offline</em></h4><img class="no-margin" src="./images/better-data-layer/mock-data.png" alt="GraphQL query using mock data.">
+					<h4>Work <em>Offline</em></h4><img class="no-margin" src="lib/images/mock-data.png" alt="GraphQL query using mock data.">
 					<p class="no-margin">Get realistic, variable mock data.</p>
 				</section>
 				<section>
 					<h2>Adding data to the UI is a breeze 👌</h2>
 				</section>
-				<section><img class="no-margin no-border" src="./images/better-data-layer/react-with-data.png" alt="React component using GraphQL query.">
+				<section><img class="no-margin no-border" src="lib/images/react-with-data.png" alt="React component using GraphQL query.">
 				</section>
 				<section>
-					<h4><em>Loading states</em> are basically free</h4><img class="no-margin no-border" src="./images/better-data-layer/loading-pattern.png" alt="Loading and error properties.">
+					<h4><em>Loading states</em> are basically free</h4><img class="no-margin no-border" src="lib/images/loading-pattern.png" alt="Loading and error properties.">
 				</section>
 				<section>
-					<h4><em>Skeleton</em> components 💀 are even better</h4><img class="no-margin no-border" src="./images/better-data-layer/skeleton-pattern.png" alt="Loading class for skeleton components.">
+					<h4><em>Skeleton</em> components 💀 are even better</h4><img class="no-margin no-border" src="lib/images/skeleton-pattern.png" alt="Loading class for skeleton components.">
 				</section>
 				<section>
 					<h4>Skeleton components let us render an explorable UI <em>before</em> data is loaded</h4>
@@ -170,38 +176,71 @@
 					<script async src="https://production-assets.codepen.io/assets/embed/ei.js"></script>
 				</section>
 				<section>
-					<h4>We can also show data <em>as it arrives</em></h4><img class="no-margin no-border" src="./images/better-data-layer/deferred.png" alt="Deferred data loading.">
+					<h4>We can also show data <em>as it arrives</em></h4><img class="no-margin no-border" src="lib/images/deferred.png" alt="Deferred data loading.">
 				</section>
 				<section>
-					<h2>Case Study:</h2>
+					<h2>Proof of Concept:</h2>
 					<h4>IBM Cloud Account Usage Dashboard</h4>
+
+					<aside class="notes">
+						<ul>
+							<li>
+								So with all of these exciting benefits in mind, we wanted to put them
+								into practice by re-making a page on IBM Cloud with React and Apollo's
+								GraphQL client.
+							</li>
+							<li>
+								This way we would have something tangible to show the higher-ups and
+								actually get some buy-in to put GraphQL into production at IBM.
+							</li>
+						</ul> 
+					</aside>
 				</section>
 				<section>
-					<video src="./video/2017-06-08-comparison_first-load.mp4" controls></video>
+					<video src="lib/videos/2017-06-08-comparison_first-load.mp4" controls></video>
+
+					<aside class="notes">
+						<ul>
+							<li>
+								And before I show you this video, let me set the scene.
+							</li>
+							<li>
+								The page we decided to rebuild was the usage dashboard. This is the
+								page that users visit to see the cost breakdown for their monthly
+								bill from IBM Cloud.
+							</li>
+							<li>
+								This page was built in Dojo, at breakneck speed back when IBM was 
+								trying to get Bluemix off the ground.
+							</li>
+							<li>
+								And finally, the account we're using is a test account, filled
+								with a bunch of random services and data, so in terms of performance,
+								it's a true worst-case scenario.
+							</li>
+						</ul> 
+					</aside>
 				</section>
 				<section>
-					<video src="./video/2017-06-08-comparison_switch-account.mp4" controls></video>
+					<video src="lib/videos/2017-06-08-comparison_switch-account.mp4" controls></video>
 				</section>
 
 				<!-- GrAMPS -->
 
 				<section>
-					<h3>I wanted to start using it in production <em>immediately</em></h3>
+					<h3>We wanted to start using it in production <em>immediately</em></h3>
 					<aside class="notes">
-						I’m slow to pick up new ideas, but once I decide something is the right
-						path forward, I want to go all-in. So after I did my initial research on
-						the pros and cons of GraphQL and decided it was a smart move, I
-						immediately started telling everyone that we needed to change everything,
-						right away.
+						We were so excited with the results of our proof of concept that we wanted
+						to rip out our entire middle tier and replace it with GraphQL.
 						
 					</aside>
 				</section>
-				<section><img src="./images/graphql-microservices/nope.gif" alt="nope">
+				<section><img src="lib/images/nope.gif" alt="nope">
 					<h3 class="no-margin">Not everyone was on board</h3>
 					<aside class="notes">
 						Other teams immediately started voicing concerns, and a number of really
-						good questions were raised. And it’s a good thing, too, because I was only
-						thinking about the end — not the path we’d have to follow to get there.
+						good questions were raised. Which is a good thing, because we were only
+						thinking about the end — not the path we’d have to take to get there.
 						
 					</aside>
 				</section>
@@ -222,13 +261,9 @@
 						<li class="fragment">Teams control their own workflow</li>
 					</ul>
 					<aside class="notes">
-						Teams basically have full autonomy to build however they want. This is
-						great for empowering our teams, but it’s led to consistency problems.
-						Documentation is spotty, hidden in wikis, and usually incomplete and/or
-						out of date. You have to know someone who knows someone to get help
-						fetching data from a new back-end service. Developers can’t help out
-						other teams because the codebases are so different that it takes too long
-						to get familiar with a new plugin.
+						There are a couple of shared NPM modules for things like session management
+						and authorization, but for the most part, teams are able to control their 
+						own workflow. But...
 						
 					</aside>
 				</section>
@@ -241,16 +276,28 @@
 						<li class="fragment">Code can be wildly inconsistent between µ-services</li>
 					</ul>
 					<aside class="notes">
-						There are too many moving parts for anyone to know exactly what’s
-						going on at any given time. If a team makes a breaking change, it’s
-						nearly impossible to let everyone know — so typically teams just break
-						shit and wait for people to ask. If a data source we rely on changes,
-						we need to figure out who owns it and hope that the documentation is
-						clear enough to solve our problem — and that’s not always the case.
-						And since each codebase is completely different, it can be extremely
-						time-consuming to attempt to send pull requests that don’t introduce
-						new bugs. (That’s a topic for another talk, though.)
-						
+						<ul>
+							<li>
+									Things can change in 30+ directions at any given time, and more often
+									then not, a change will happen that not everyone is prepared for, meaning
+									downtime, late night phone calls, and whatever else.
+							</li>
+							<li>
+									Building a new UI from scratch means you have to burn a lot of time tracking
+									down where you're going to get your data from.
+							</li>
+							<li>
+									And because internal documentation is inconsistent, when you do finally
+									find what you're looking for, there's a good chance it's out of date,
+									incomplete, and in some cases, both.
+							</li>
+							<li>
+									And because code can be so wildly inconsistent between µ-services, if you 
+									take a look at the network tab while you're browsing IBM Cloud, there's
+									a good change you'll load jQuery, Dojo, Polymer, Angular, React, Vue, and
+									whatever framework is popular 6 months from now.
+							</li>
+						</ul>
 					</aside>
 				</section>
 				<section>
@@ -261,6 +308,29 @@
 						<li class="fragment">Documentation is centralized and consistent</li>
 						<li class="fragment">Cleaner separation between data and presentation</li>
 					</ul>
+					<aside class="notes">
+						<ul>
+							<li>
+								Changes get centralized. If a back-end team is going to make a breaking change,
+								they only have to let GraphQL know, and it can then deprecate the field, add notes,
+								link to upgrade path docs, etc. Bottom line is that everyone is prepared.
+							</li>
+							<li>
+								Being able to cut down of the amount of HTTP requests you send can be a huge boon
+								to performance. 
+							</li>
+							<li>
+								As I mentioned before, documentation is automatically generated by the schema,
+								so any changes are centralized and consistent. And even if they're not as great
+								as we might hope, you can still play around with those queries right in the
+								browser.
+							</li>
+							<li>
+								By abstracting our data fetching into a middle tier, we're able to get a clearer
+								picture as to where problems actually occur.
+							</li>
+						</ul>
+					</aside>
 				</section>
 				<section>
 					<h3 style="width: 110%; margin-left: -5%;">But there are <strong>complications</strong>:</h3>
@@ -270,6 +340,22 @@
 						<li class="fragment">Can one bad commit take down the whole service?</li>
 						<li class="fragment">Doesn’t an extra layer make it harder to trace errors?</li>
 					</ul>
+
+					<aside class="notes">
+						<ul>
+							<li>
+								Does every team need to hand over control of their data to this one service?
+							</li>
+							<li>
+								If a back-end team needs to update their GraphQL schema, do they have to submit
+								a pull request, and just be at the whim of this gatekeeper?
+							</li>
+							<li>
+								If this service, goes down, would that take down every single team along with
+								it?
+							</li>
+						</ul>
+					</aside>
 				</section>
 				<section>
 					<h3>We wanted the <em>benefits</em> of GraphQL&hellip;<span class="fragment"> but could we afford the trade-offs?</span></h3>
@@ -286,12 +372,12 @@
 						<li class="fragment">Build a service that can handle IBM’s scale?</li>
 					</ol>
 					<aside class="notes">
-						I knew that GraphQL was in production at Facebook, GitHub, and several 
-						other companies at IBM’s scale, but what we <em>didn’t</em> know was how much
-						hard work goes into making it run. Did we need a whole team just for
-						managing scalability? Would we need to spend a fortune on infrastructure
-						to make it feasible?
-						
+						<ul>
+							<li>
+								We're currently running at about half a dozen data centers around the world,
+								so could this be robust enough to handle our level of traffic?
+							</li>
+						</ul>
 					</aside>
 				</section>
 				<section>
@@ -307,27 +393,24 @@
 						for sharing schemas.
 						
 					</h3>
-					<aside class="notes">
-						In general, the GraphQL community talks about server-side GraphQL as a
-						schema, a set of resolvers, and then code that you have to figure out on
-						your own to get data. But Jonas Helfer suggested additional abstractions:
-						Models and Connectors. We started with that and built a boilerplate for 
-						adding data to GraphQL servers.
-						
-					</aside>
 				</section>
 				<section>
 					<h2>We call these<br><em>Data Sources</em></h2>
 				</section>
-				<section><img class="no-border" src="./images/graphql-microservices/gramps-data-source-1.svg" alt="GrAMPS data source, part 1">
+				<section>
+					<img class="no-border" src="lib/images/gramps-data-source-1.svg" alt="GrAMPS data source, part 1">
 				</section>
-				<section><img class="no-border" src="./images/graphql-microservices/gramps-data-source-2.svg" alt="GrAMPS data source, part 2">
+				<section>
+					<img class="no-border" src="lib/images/gramps-data-source-2.svg" alt="GrAMPS data source, part 2">
 				</section>
-				<section><img class="no-border" src="./images/graphql-microservices/gramps-data-source-3.svg" alt="GrAMPS data source, part 3">
+				<section>
+					<img class="no-border" src="lib/images/gramps-data-source-3.svg" alt="GrAMPS data source, part 3">
 				</section>
-				<section><img class="no-border" src="./images/graphql-microservices/gramps-data-source-4.svg" alt="GrAMPS data source, part 4">
+				<section>
+					<img class="no-border" src="lib/images/gramps-data-source-4.svg" alt="GrAMPS data source, part 4">
 				</section>
-				<section><img class="no-border" src="./images/graphql-microservices/gramps-data-source-5.svg" alt="GrAMPS data source, part 5">
+				<section>
+					<img class="no-border" src="lib/images/gramps-data-source-5.svg" alt="GrAMPS data source, part 5">
 				</section>
 				<section>
 					<h3>Each data source is an <em>independent</em> GitHub repo, which means:</h3>
@@ -351,13 +434,13 @@
 						</ul>
 					</aside>
 				</section>
-				<section><img class="no-border" src="./images/graphql-microservices/gramps-all-together-1.svg" alt="GrAMPS architecture, part 1">
+				<section><img class="no-border" src="lib/images/gramps-all-together-1.svg" alt="GrAMPS architecture, part 1">
 				</section>
-				<section><img class="no-border" src="./images/graphql-microservices/gramps-all-together-2.svg" alt="GrAMPS architecture, part 2">
+				<section><img class="no-border" src="lib/images/gramps-all-together-2.svg" alt="GrAMPS architecture, part 2">
 				</section>
-				<section><img class="no-border" src="./images/graphql-microservices/gramps-all-together-3.svg" alt="GrAMPS architecture, part 3">
+				<section><img class="no-border" src="lib/images/gramps-all-together-3.svg" alt="GrAMPS architecture, part 3">
 				</section>
-				<section><img class="no-border" src="./images/graphql-microservices/gramps-all-together-4.svg" alt="GrAMPS architecture, part 4">
+				<section><img class="no-border" src="lib/images/gramps-all-together-4.svg" alt="GrAMPS architecture, part 4">
 				</section>
 				<section>
 					<h2><em>Implementation</em> is easy enough to fit the code on a slide</h2>
@@ -488,7 +571,7 @@ app.use('/graphql',
 					</ul>
 				</section>
 				<section>
-					<h4><em>Client-Side</em> Errors in Development</h4><img class="no-margin" src="./images/graphql-microservices/client-side-error.png" alt="GrAMPS client-side error">
+					<h4><em>Client-Side</em> Errors in Development</h4><img class="no-margin" src="lib/images/client-side-error.png" alt="GrAMPS client-side error">
 				</section>
 				<section>
 					<h4>In production, we <strong>can’t show some data</strong></h4>
@@ -498,7 +581,7 @@ app.use('/graphql',
 					</ul>
 				</section>
 				<section>
-					<h4>Client-Side Errors in <em>Production</em></h4><img class="no-margin" src="./images/graphql-microservices/client-side-error-production.png" alt="GrAMPS client-side error in production">
+					<h4>Client-Side Errors in <em>Production</em></h4><img class="no-margin" src="lib/images/client-side-error-production.png" alt="GrAMPS client-side error in production">
 					<p class="no-margin"><small><code>docsLink</code> and <code>targetEndpoint</code> are removed in production.
 							</small></p>
 				</section>
@@ -603,11 +686,11 @@ $ gramps --live
 					</aside>
 				</section>
 				<section>
-					<h4>But add a <em>warning</em></h4><img class="no-margin" src="./images/graphql-microservices/local-data-source-warnings-pt1.png" alt="GrAMPS warnings for local data sources">
+					<h4>But add a <em>warning</em></h4><img class="no-margin" src="lib/images/local-data-source-warnings-pt1.png" alt="GrAMPS warnings for local data sources">
 					<p class="no-margin"><small>Clarified text and updated links are coming (<a href="https://github.com/gramps-graphql/gramps-express/issues/36">#36</a>)</small></p>
 				</section>
 				<section>
-					<h4>Actually, add <em>two</em> warnings</h4><img class="no-margin" src="./images/graphql-microservices/local-data-source-warnings-pt2.png" alt="GrAMPS warnings for local data sources">
+					<h4>Actually, add <em>two</em> warnings</h4><img class="no-margin" src="lib/images/local-data-source-warnings-pt2.png" alt="GrAMPS warnings for local data sources">
 					<p class="no-margin"><small>Clarified text and updated links are coming (<a href="https://github.com/gramps-graphql/gramps-express/issues/36">#36</a>)</small></p>
 				</section>
 				<section>
@@ -618,7 +701,7 @@ $ gramps --live
 					<h3>We didn’t have to do much</h3>
 					<p class="fragment">It turns out Apollo’s Express server just works.</p>
 				</section>
-				<section><img src="./images/graphql-microservices/pleasant-surprise.gif" alt="pleasant surprise from The Office">
+				<section><img src="lib/images/pleasant-surprise.gif" alt="pleasant surprise from The Office">
 					<h3 class="no-margin">Which is pretty <em>great</em></h3>
 				</section>
 				<section>
@@ -650,7 +733,7 @@ $ gramps --live
 					<h2>So we<br>released it under the <em>MIT license</em></h2>
 					<h2>🎉</h2>
 				</section>
-				<section><img class="no-border" src="./images/graphql-microservices/GrAMPS-logo.svg" alt="GrAMPS: GraphQL Apollo Microservice Pattern Server" style="max-width: 400px;">
+				<section><img class="no-border" src="lib/images/GrAMPS-logo.svg" alt="GrAMPS: GraphQL Apollo Microservice Pattern Server" style="max-width: 400px;">
 					<h1 class="no-margin">GrAMPS</h1>
 					<p><strong>Gr</strong>aphQL 
 						<strong>A</strong>pollo 
