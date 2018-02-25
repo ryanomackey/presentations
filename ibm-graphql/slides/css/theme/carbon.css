@@ -2,15 +2,38 @@
  * Carbon theme for reveal.js.
  */
 @import url(../../../node_modules/@ibm/type/css/ibm-type.min.css);
-.ibm {
+.header {
+  align-items: center;
+  background-color: #152935;
+  color: #ffffff;
+  display: flex;
+  top: 0;
+  font-size: 1.125rem !important;
+  height: 3rem;
+  left: 0;
+  padding-left: .5rem !important;
   position: fixed;
-  bottom: 5px;
-  left: 5px;
-  font-size: .6em !important; }
+  width: 100%; }
+
+.ibm {
+  align-items: center;
+  display: flex;
+  justify-content: space-between; }
+  .ibm__cloud-icon {
+    height: 32px;
+    margin-right: 8px;
+    width: 24px; }
   .ibm__brand {
-    font-weight: 300; }
+    font-weight: 300 !important; }
   .ibm__product {
-    font-weight: bold !important; }
+    font-weight: 700 !important; }
+
+.no-border {
+  border: none !important;
+  box-shadow: none !important; }
+
+strong, em {
+  color: #3d70b2 !important; }
 
 /*********************************************
  * GLOBAL STYLES
