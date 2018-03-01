@@ -34,8 +34,8 @@
 
 			<div class="slides">
 				<section>
-					<h2>Bringing GraphQL to the Enterprise:</h2>
-					<h4>When IBM Met Apollo</h4>
+					<h2>Bringing GraphQL to the Enterprise</h2>
+					<h3><strong>When IBM Met Apollo</strong></h3>
 				</section>
 				
 				<section>
@@ -51,20 +51,20 @@
 					<aside class="notes">
 						<ul>
 							<li>
-								Before I get into my talk, let me tell you a little bit about myself.
-								My name is Ryan Mackey, and I'm originally from Fort Collins, Colorado.
+								Before I get into my talk, let me tell you a little bit about myself. My name is
+								Ryan Mackey, and I'm originally from Fort Collins, Colorado.
 							</li>
-								
+					
 							<li>
-								While I was there, I got my degree in Political Science at Colorado State, 
-								and if you’ve been keeping up with the news, it should be pretty obvious 
-								why I got in to web development instead.
+								While I was there, I got my degree in Political Science at Colorado State, and if
+								you’ve been keeping up with the news, it should be pretty obvious why I got in
+								to web development instead.
 							</li>
-
+					
 							<li>
-								Now, I'm a Front-End Developer at IBM working on their cloud platform in
-								Austin, Texas, so I've basically gone from not leaving my apartment the
-								entire winter, to not leaving my apartment the entire summer.
+								Now, I'm a Front-End Developer at IBM working on their cloud platform in Austin,
+								Texas, so I've basically gone from not leaving my apartment the entire winter,
+								to not leaving my apartment the entire summer.
 							</li>
 						</ul>
 					</aside>
@@ -78,18 +78,17 @@
 					<aside class="notes">
 						<ul>
 							<li>
-								So, I start at IBM about a year ago, and I'm immediately paired up with
-								a senior developer named, Jason Lengstorf.
+								So, I start at IBM about a year ago, and I'm immediately paired up with a senior
+								developer named, Jason Lengstorf.
 							</li>
-
+					
 							<li>
-								And at the time, Jason was really excited about GraphQL. Specifically,
-								he was really excited about a library for GraphQL called Apollo.
+								And at the time, Jason was really excited about GraphQL. Specifically, he was really
+								excited about a library for GraphQL called Apollo.
 							</li>
-
+					
 							<li>
-								And after I played around with it for a bit, I got really excited about
-								it as well.
+								And after I played around with it for a bit, I got really excited about it as well.
 							</li>
 						</ul>
 					</aside>
@@ -124,12 +123,11 @@ query {
 					<aside class="notes">
 						<ul>
 							<li>
-								If you're new to GraphQL, this is where it all starts. You describe the data
-								you want, and you get it back in that exact shape.
+								If you're new to GraphQL, this is where it all starts. You write what are called
+								queries, and describe the data that you want; nothing more, nothing less.
 							</li>
 							<li>
-								If you want a list of users, and only need the 'id' and 'username', that's
-								all you would get.
+								And on top of that, you get back that data in the exact same shape that you described.
 							</li>
 						</ul>
 					</aside>
@@ -140,13 +138,28 @@ query {
 					<video autoplay loop>
 						<source src="lib/videos/graphiql.mp4#t=23,39" />
 					</video>
+
+					<aside class="notes">
+						<ul>
+							<li>
+								Another great thing from a UI standpoint is the developer tools.
+							</li>
+							<li>
+								Using the type definitions (or schema) from your GraphQL server, these tools can
+								generate instant documentation and let you test queries and mutations right from
+								the browser.
+							</li>
+						</ul>
+					</aside>
 				</section>
 
 				<section>
 					<h3>The entire request cycle is handled for you</h3>
 
 <pre style="font-size: 18px;" class="javascript"><code data-trim> 
-const UsersList = ({ data, loading, error }) => {
+const UsersQuery = `query { Users { username } }`;
+
+const UsersList = ({ data: { Users }, loading, error }) => {
   if (loading) {
     return <p>Loading...</p>
   }
@@ -157,37 +170,48 @@ const UsersList = ({ data, loading, error }) => {
 
   return (
     <ul>
-      {data.Users.map(user => <li>{user.username}</li>)}
+      {Users.map(user => <li>{user.username}</li>)}
     </ul>
   );
 }
+
+export default graphql(UsersQuery)(UsersList);
 </code></pre>
 
 					<aside class="notes">
 						<ul>
 							<li>
-								With Apollo, for every React component that you wrap with a query,
-								in addition to the data, you get the loading state, as well as any
-								errors, all for free.			
+								With Apollo, for every React component that you wrap with a query, in addition to
+								the data, you get the loading state, as well as any errors, all for free.
 							</li>
 							<li>
-								So as a UI developer, this means you can focus all of your attenion
-								on presentation and user experience.
+								So as a UI developer, this means you can focus all of your attenion on presentation
+								and user experience.
 							</li>
 						</ul>
 					</aside>
 				</section>
 
 				<section>
-					<h3>Also...</h3>
+					<h3>Zero-config Caching</h3>
 
-					<ul>
-						<li>Zero-config caching</li>
-						<li>Optimistic updates</li>
-						<li>Data prefetching</li>
-						<li>Server-side rendering</li>
-						<li>And more...</li>
-					</ul>
+					<ol>
+						<li>
+							The query is loaded from the Apollo <strong>client-side data store</strong>, 
+							or the server if the data is not in the store.
+						</li>
+						<li>
+							Our component <strong>subscribes to the store</strong>, so that it is updated
+							if the data changes as the result of a mutation or some other response from 
+							the server.
+						</li>
+					</ol>
+
+					<aside class="notes">
+						<ul>
+							<li>Two things happen when a Apollo tries to execute a query on the client side:</li>
+						</ul>
+					</aside>
 				</section>
 
 				<section>
@@ -197,10 +221,10 @@ const UsersList = ({ data, loading, error }) => {
 					<aside class="notes">
 						<ul>
 							<li>
-								In order to get some buy-in to start putting this into
-								production, we had to start with a proof of concept.
+								In order to get some buy-in to start putting this into production, we had to start
+								with a proof of concept.
 							</li>
-						</ul> 
+						</ul>
 					</aside>
 				</section>
 				<section>
@@ -212,24 +236,31 @@ const UsersList = ({ data, loading, error }) => {
 								And before I show you this video, let me set the scene.
 							</li>
 							<li>
-								The page we decided to rebuild was the usage dashboard. This is the
-								page that users visit to see the cost breakdown for their monthly
-								bill from IBM Cloud.
+								The page we decided to rebuild was the usage dashboard. This is the page that users
+								visit to see the cost breakdown for their monthly bill from IBM Cloud.
 							</li>
 							<li>
-								This page was built in Dojo, at breakneck speed back when IBM was 
-								trying to get Bluemix off the ground.
+								This page was built in Dojo, at breakneck speed back when IBM was trying to get Bluemix
+								off the ground.
 							</li>
 							<li>
-								And finally, the account we're using is a test account, filled
-								with a bunch of random services and data, so in terms of performance,
-								it's a true worst-case scenario.
+								And finally, the account we're using is a test account, filled with a bunch of random
+								services and data, so in terms of performance, it's a true worst-case scenario.
 							</li>
-						</ul> 
+						</ul>
 					</aside>
 				</section>
 				<section>
-					<video src="lib/videos/2017-06-08-comparison_switch-account.mp4" controls></video>
+					<video src="lib/videos/2017-06-08-comparison_switch-account.mp4#t=13" controls></video>
+
+					<aside class="notes">
+						<ul>
+							<li>
+								And because of the zero-config caching, users could switch back and forth between
+								accounts they had already loaded without having to do any waiting.
+							</li>
+						</ul>
+					</aside>
 				</section>
 
 				<!-- GrAMPS -->
@@ -237,26 +268,23 @@ const UsersList = ({ data, loading, error }) => {
 				<section>
 					<h3>We wanted to start using it in production <em>immediately</em></h3>
 					<aside class="notes">
-						We were so excited with the results of our proof of concept that we wanted
-						to rip out our entire middle tier and replace it with GraphQL.
-						
+						We were so excited with the results of our proof of concept that we wanted to rip
+						out our entire middle tier and replace it with GraphQL.
 					</aside>
 				</section>
 				<section><img src="lib/images/nope.gif" alt="nope">
 					<h3 class="no-margin">Not everyone was on board</h3>
 					<aside class="notes">
-						Other teams immediately started voicing concerns, and a number of really
-						good questions were raised. Which is a good thing, because we were only
-						thinking about the end — not the path we’d have to take to get there.
-						
+						Other teams immediately started voicing concerns, and a number of really good questions
+						were raised. Which is a good thing, because we were only thinking about the end
+						— not the path we’d have to take to get there.
 					</aside>
 				</section>
 				<section>
 					<h4>Before we get into the details,<br>let me set the scene&hellip;</h4>
 					<aside class="notes">
-						Before I bring up the questions that were asked, let me give you some
-						insight into the way things are structured on our product.
-						
+						Before I bring up the questions that were asked, let me give you some insight into
+						the way things are structured on our product.
 					</aside>
 				</section>
 				<section>
@@ -268,10 +296,8 @@ const UsersList = ({ data, loading, error }) => {
 						<li class="fragment">Teams control their own workflow</li>
 					</ul>
 					<aside class="notes">
-						There are a couple of shared NPM modules for things like session management
-						and authorization, but for the most part, teams are able to control their 
-						own workflow. But...
-						
+						There are a couple of shared NPM modules for things like session management and authorization,
+						but for the most part, teams are able to control their own workflow. But...
 					</aside>
 				</section>
 				<section>
@@ -285,24 +311,24 @@ const UsersList = ({ data, loading, error }) => {
 					<aside class="notes">
 						<ul>
 							<li>
-									Things can change in 30+ directions at any given time, and more often
-									then not, a change will happen that not everyone is prepared for, meaning
-									downtime, late night phone calls, and whatever else.
+								Things can change in 30+ directions at any given time, and more often then not, a
+								change will happen that not everyone is prepared for, meaning downtime, late night
+								phone calls, and whatever else.
 							</li>
 							<li>
-									Building a new UI from scratch means you have to burn a lot of time tracking
-									down where you're going to get your data from.
+								Building a new UI from scratch means you have to burn a lot of time tracking down
+								where you're going to get your data from.
 							</li>
 							<li>
-									And because internal documentation is inconsistent, when you do finally
-									find what you're looking for, there's a good chance it's out of date,
-									incomplete, and in some cases, both.
+								And because internal documentation is inconsistent, when you do finally find what
+								you're looking for, there's a good chance it's out of date, incomplete, and in
+								some cases, both.
 							</li>
 							<li>
-									And because code can be so wildly inconsistent between µ-services, if you 
-									take a look at the network tab while you're browsing IBM Cloud, there's
-									a good change you'll load jQuery, Dojo, Polymer, Angular, React, Vue, and
-									whatever framework is popular 6 months from now.
+								And because code can be so wildly inconsistent between µ-services, if you take a
+								look at the network tab while you're browsing IBM Cloud, there's a good change
+								you'll load jQuery, Dojo, Polymer, Angular, React, Vue, and whatever framework
+								is popular 6 months from now.
 							</li>
 						</ul>
 					</aside>
@@ -471,19 +497,9 @@ const UsersList = ({ data, loading, error }) => {
 						<li class="fragment">✅ No accidental borking<br><small>Each team’s code has individual test suites.</small></li>
 					</ul>
 				</section>
+
 				<section>
 					<h3>How do we <em>combine</em> the data sources?</h3>
-					<aside class="notes">
-						<ul>
-							<li>The GraphQL µ-service core is an empty schema</li>
-							<li>Each data source is an npm package, which is added as a dependency</li>
-							<li>
-								Express middleware composes the data sources into a single set of 
-								arguments for use with the Apollo Express server
-								
-							</li>
-						</ul>
-					</aside>
 				</section>
 
 				<section><img class="no-border" src="lib/images/GrAMPS-logo.svg" alt="GrAMPS: GraphQL Apollo Microservice Pattern Server" style="max-width: 400px;">
@@ -744,6 +760,16 @@ npx graphql-cli create -b gramps-graphql/data-source-base data-source-mydata
 				<section>
 					<h4>We built a <em>CLI</em> to make development easier</h4>
 					<img class="no-margin" src="lib/images/gramps-cli.png" />
+
+					<aside class="notes">
+						<ul>
+							<li>
+								With this, you could run your data source locally, include a gateway to a GraphQL
+								server, and even run it with a mock flag if you wanted to generate mock data, using
+								mock resolvers.
+							</li>
+						</ul>
+					</aside>
 				</section>
 				<section>
 					<h3>But there was a <strong>snag</strong>:</h3>
@@ -784,25 +810,13 @@ npx graphql-cli create -b gramps-graphql/data-source-base data-source-mydata
 				<section>
 					<h3>It hit <em>production</em> in <em>July</em></h3>
 				</section>
+
 				<section>
-					<h3>After the dust settled,<br>we realized <em>two things</em></h3>
-				</section>
-				<section>
-					<h2>#1</h2>
-					<p>
-						“If everyone wrote their data sources using this format, the 
-						dev community could share GraphQL data sources as easily as we share 
-						npm packages.”
-						
-					</p>
-				</section>
-				<section>
-					<h2>#2</h2>
-					<p>“This might be useful to other people.”</p>
+					<h3>And we went <em>open source</em> in <em>October</em></h3>
 				</section>
 
 				<section>
-					<h3>Schema Stitching</h3>
+					<h3>Bonus: Schema Stitching</h3>
 
 					<pre style="font-size: 18px;"><code class="javascript">
 export default {
@@ -824,13 +838,39 @@ export default {
   }),
 };
 					</code></pre>
+
+					<aside class="notes">
+						<ul>
+							<li>
+								Since we went open source with it, one of the nice surpises we noticed about this
+								format ended up being schema stitching.
+							</li>
+							<li>
+								If you're unfamiliar schema stitching is the process of taking one GraphQL schema,
+								and extending it by adding your own, additional fields.
+							</li>
+							<li>
+								So with GrAMPS, because people can easily share schemas, it made it even easier to
+								do this. Which opens up really cool possibilities for combining APIs in new and
+								intersting ways, without all of the headache that normally comes along with that.
+							</li>
+						</ul>
+					</aside>
 				</section>
 
-				<section>
-						<h2>GrAMPS</h2>
-						<img class="no-border" src="lib/images/grampa-simpson.gif" />
-						<p>Get your data off my lawn.</p>
+				<section><img class="no-border" src="lib/images/GrAMPS-logo.svg" alt="GrAMPS: GraphQL Apollo Microservice Pattern Server" style="max-width: 400px;">
+					<h1 class="no-margin">GrAMPS</h1>
+					<p><strong>Gr</strong>aphQL 
+						<strong>A</strong>pollo 
+						<strong>M</strong>icroservice 
+						<strong>P</strong>attern 
+						<strong>S</strong>erver
+						<small>
+							<a href="https://github.com/gramps-graphql/gramps">github.com/gramps-graphql/gramps</a> &nbsp; · &nbsp; <a href="https://www.npmjs.com/org/gramps">npmjs.com/org/gramps</a>
+						</small>
+					</p>
 				</section>
+
 				<section>
 					<h2>Thanks!</h2>
 				</section>
@@ -838,7 +878,7 @@ export default {
 					<h4>Resources</h4>
 					<ol>
 						<li><a href="https://github.com/gramps-graphql">GrAMPS on GitHub</a></li>
-						<li><a href="https://github.com/gramps-graphql/gramps-express">GrAMPS Express Middleware</a></li>
+						<li><a href="https://github.com/gramps-graphql/gramps">GrAMPS Express Middleware</a></li>
 						<li><a href="https://gramps-graphql.github.io/gramps-express/">GrAMPS Documentation</a></li>
 						<li><a href="https://dev-blog.apollodata.com/how-to-build-graphql-servers-87587591ded5">How to Build GraphQL Servers</a></li>
 						<li><a href="https://github.com/gramps-graphql/data-source-base">GrAMPS Data Source Starter Kit</a></li>
